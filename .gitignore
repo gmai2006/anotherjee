@@ -1,0 +1,4 @@
+*.html
+WEB-INF/classes/*
+**/*.class
+**/*.jar

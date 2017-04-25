@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<persistence xmlns="http://java.sun.com/xml/ns/persistence"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/persistence
+        http://java.sun.com/xml/ns/persistence/persistence_1_0.xsd"
+	version="1.0">
+
+	<!-- A JPA Persistence Unit -->
+	<persistence-unit name="snowJPA" transaction-type="RESOURCE_LOCAL">
+		<provider>org.hibernate.ejb.HibernatePersistence</provider>
+		<!-- JPA entities must be registered here -->
+		<class>com.tomcat.hosting.dao.User</class>
+		<class>com.tomcat.hosting.dao.Company</class>
+		<class>com.tomcat.hosting.dao.CompanyV</class>
+		<class>com.tomcat.hosting.dao.VendorLocation</class>
+		<class>com.tomcat.hosting.dao.VendorLocationPK</class>
+		<class>com.tomcat.hosting.dao.ZipcodeGeo</class>
+		<class>com.tomcat.hosting.dao.VendorClient</class>
+		<class>com.tomcat.hosting.dao.VendorClientPK</class>
+		<class>com.tomcat.hosting.dao.AssignedCompanyV</class>
+		
+		<properties>
+			<property name="hibernate.connection.driver_class" value="com.mysql.jdbc.Driver"></property>
+			<property name="hibernate.connection.url"
+				value="jdbc:mysql://localhost:3306/snow?autoReconnect=true"></property>
+			<property name="hibernate.connection.username" value="snow_owner"></property>
+			<property name="hibernate.connection.password" value="snow2015$$"></property>
+			<property name="hibernate.dialect" value="org.hibernate.dialect.MySQLDialect"></property>
+			<!-- Default is false for backwards compatibility. Should be used on all 
+				new projects -->
+			<property name="hibernate.id.new_generator_mappings" value="true"></property>
+			<!-- C3P0 connection pool -->
+			<property name="hibernate.c3p0.timeout" value="600"></property>
+			<property name="hibernate.c3p0.maxIdleTimeExcessConnections"
+				value="20"></property>
+
+			<!-- Connection testing settings -->
+			<property name="hibernate.c3p0.validate" value="true"></property>
+			<property name="hibernate.c3p0.idle_test_period" value="30"></property>
+			<!-- 
+			<property name="hibernate.c3p0.automaticTestTable" value="User"></property>
+			 -->
+			 
+			<!-- Enable Hibernate's automatic session context management -->
+			<property name="current_session_context_class" value="thread"></property>
+
+			<!-- Echo all executed SQL to stdout -->
+			<property name="show_sql" value="true"></property>
+		</properties>
+	</persistence-unit>
+
+</persistence>

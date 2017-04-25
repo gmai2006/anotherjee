@@ -1,0 +1,65 @@
+apply plugin: 'java' 
+apply plugin: 'war' 
+apply plugin: 'eclipse'
+repositories {
+  flatDir { dirs "./" }
+  mavenCentral()
+}
+
+dependencies {
+  testCompile group: 'junit', name: 'junit', version: '4.+'
+  compile "com.google.inject:guice:3.0", 
+	'org.mongodb:mongodb-driver:3.0.2',
+	'org.mongodb:bson:2.13.2',
+	'org.mongodb.morphia:morphia:1.0.0',
+  "com.google.inject.extensions:guice-servlet:3.0", 
+  "com.google.inject.extensions:guice-persist:3.0",
+  "mysql:mysql-connector-java:5.1.6",
+  "org.hibernate.javax.persistence:hibernate-jpa-2.0-api:1.0.1.Final",
+  "junit:junit:4.+",
+  "org.hibernate:hibernate-entitymanager:4.2.1.Final",
+  "log4j:log4j:1.2.17",
+  "org.antlr:ST4:4.0.7",
+  "org.slf4j:slf4j-api:1.7.6",
+  "org.apache.httpcomponents:httpclient:4.3.1",
+  "net.sf.ehcache:ehcache:2.8.1",
+  "com.lowagie:itext:2.1.7",
+  "commons-fileupload:commons-fileupload:1.3",
+  "joda-time:joda-time:2.7",
+  "org.codemonkey.simplejavamail:simple-java-mail:2.1",
+  "org.apache.commons:commons-lang3:3.3.2",
+  'com.googlecode.htmlcompressor:htmlcompressor:1.5.2',
+  'commons-logging:commons-logging:1.1.3',
+	'org.apache.httpcomponents:httpclient:4.3.6',
+  "com.googlecode.json-simple:json-simple:1.1",
+  'net.sf.jsefa:jsefa:1.1.1.RELEASE',
+  'org.twitter4j:twitter4j-core:4.0.1'
+}
+
+
+eclipse {
+  
+  classpath {
+    //customizing the classes output directory:
+    defaultOutputDir = file('./src/main/webapp/WEB-INF/classes')
+  }
+}
+
+task buildlibdir(type: Copy) {  
+  into "./src/main/webapp/WEB-INF/lib/"  
+  from configurations.runtime  
+}
+
+task cleanlibdir (type: Delete){  
+    doLast {  
+        FileTree tree = fileTree (dir: "./src/main/webapp/WEB-INF/lib/");  
+        tree.each { File file ->    
+            delete(file)  
+        }  
+    }  
+}
+buildlibdir.dependsOn cleanlibdir
+task buildlib(dependsOn: ['buildlibdir', 'cleanlibdir'])
+
+
+

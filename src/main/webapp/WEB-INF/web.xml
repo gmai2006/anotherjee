@@ -1,0 +1,38 @@
+<!DOCTYPE web-app 
+    PUBLIC "-//Sun Microsystems, Inc.//DTD Web Application 2.3//EN" 
+    "http://java.sun.com/dtd/web-app_2_3.dtd">
+
+<web-app>
+
+	<display-name>Du hoc Hoa Ky</display-name>
+	<description>
+		Du hoc Hoa Ky
+	</description>
+	<listener>
+		<listener-class>com.tomcat.hosting.servlet.HostingServletContextListener</listener-class>
+	</listener>
+	<filter>
+    <filter-name>guiceFilter</filter-name>
+    <filter-class>com.google.inject.servlet.GuiceFilter</filter-class>
+  </filter>
+   <filter>
+		<filter-name>SecurityFilter</filter-name>
+		<filter-class>com.tomcat.hosting.servlet.SecurityFilter</filter-class>
+	</filter>
+	
+	 <filter-mapping>
+		<filter-name>SecurityFilter</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping>
+	
+	 <filter-mapping>
+    <filter-name>guiceFilter</filter-name>
+    <url-pattern>/*</url-pattern>
+  </filter-mapping>
+	 
+	<welcome-file-list>
+		<welcome-file>index.html</welcome-file>
+	</welcome-file-list>
+
+
+</web-app>
