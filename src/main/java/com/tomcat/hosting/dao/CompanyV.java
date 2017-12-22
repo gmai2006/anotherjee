@@ -67,13 +67,13 @@ public class CompanyV implements Serializable {
 
 	@Column(name="company_type")
 	@CsvField(pos = 11)
-	private int companyType;
+	private Integer companyType;
 	
 	@CsvField(pos = 12)
 	private int status;
 	
-	private double lat;
-	private double lng;
+	private Double lat;
+	private Double lng;
 	@Transient
 	private double distance;
 
@@ -182,11 +182,11 @@ public class CompanyV implements Serializable {
 		this.consumerRating = consumerRating;
 	}
 
-	public int getCompanyType() {
+	public Integer getCompanyType() {
 		return companyType;
 	}
 
-	public void setCompanyType(int companyType) {
+	public void setCompanyType(Integer companyType) {
 		this.companyType = companyType;
 	}
 
@@ -212,19 +212,19 @@ public class CompanyV implements Serializable {
 		return true;
 	}
 
-	public double getLat() {
+	public Double getLat() {
 		return lat;
 	}
 
-	public void setLat(double lat) {
+	public void setLat(Double lat) {
 		this.lat = lat;
 	}
 
-	public double getLng() {
+	public Double getLng() {
 		return lng;
 	}
 
-	public void setLng(double lng) {
+	public void setLng(Double lng) {
 		this.lng = lng;
 	}
 

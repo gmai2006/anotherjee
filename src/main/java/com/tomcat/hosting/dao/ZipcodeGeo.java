@@ -22,25 +22,25 @@ public class ZipcodeGeo implements Serializable {
 	@Id
 	@Column(name = "zipcode", unique = true, nullable = false)
 	private int zipcode;
-	private double lat;
-	private double lng;
+	private Double lat;
+	private Double lng;
 	private String address;
 	public ZipcodeGeo() {
 	}
 
-	public double getLat() {
+	public Double getLat() {
 		return lat;
 	}
 
-	public void setLat(double lat) {
+	public void setLat(Double lat) {
 		this.lat = lat;
 	}
 
-	public double getLng() {
+	public Double getLng() {
 		return lng;
 	}
 
-	public void setLng(double lng) {
+	public void setLng(Double lng) {
 		this.lng = lng;
 	}
 

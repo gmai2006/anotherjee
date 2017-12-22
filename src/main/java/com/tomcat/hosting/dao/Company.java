@@ -70,7 +70,7 @@ public class Company implements Serializable {
 
 	@Column(name="company_type")
 	@CsvField(pos = 11)
-	private int companyType;
+	private Integer companyType;
 	
 	@CsvField(pos = 12)
 	private int status;
@@ -178,11 +178,11 @@ public class Company implements Serializable {
 		this.consumerRating = consumerRating;
 	}
 
-	public int getCompanyType() {
+	public Integer getCompanyType() {
 		return companyType;
 	}
 
-	public void setCompanyType(int companyType) {
+	public void setCompanyType(Integer companyType) {
 		this.companyType = companyType;
 	}
 
